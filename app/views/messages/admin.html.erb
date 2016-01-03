@@ -1,0 +1,8 @@
+<div class="header">
+  <div class="container">
+    <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
+    <h1>Admin page</h1>
+  </div>
+</div>
+
+<%= button_to "Delete all messages", {:controller => "messages", :action => 'delete'}, :confirm => "Are you sure you want to delete all messages?", :method => :delete %>

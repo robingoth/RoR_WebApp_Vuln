@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     #if @user && @user.authenticate(params[:session][:password])
     if @user && @entered_pwd == @user_pwd
       session[:user_id] = @user.id
-      redirect_to '/'
+      redirect_to '/messages'
     else
       redirect_to 'login'
     end
