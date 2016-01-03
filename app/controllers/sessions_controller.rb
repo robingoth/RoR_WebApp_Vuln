@@ -4,15 +4,23 @@ class SessionsController < ApplicationController
 
 	def create 
     @user = User.find_by_email(params[:session][:email])
-    @entered_pwd = params[:session][:password]
-    @user_pwd = @user.password
+    if @user != nil  
+      @entered_pwd = params[:session][:password]
+      @user_pwd = @user.password
+    else
+      flash[:error] = "Wrong username"
+      render 'new'
+      return
+    end
     
     #if @user && @user.authenticate(params[:session][:password])
     if @user && @entered_pwd == @user_pwd
       session[:user_id] = @user.id
       redirect_to '/messages'
     else
-      redirect_to 'login'
+      flash[:error] = "Wrong password"
+      render 'new'
+      return
     end
   end
 
