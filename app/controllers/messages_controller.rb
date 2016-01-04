@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
 	before_action :require_user, only: [:index, :show]
+  before_action :require_admin, only: [:show, :edit]  
   
   def index
     	@message = Message.new
@@ -31,6 +32,8 @@ class MessagesController < ApplicationController
   end
 
   def admin
+    #@current_user ||= User.find(session[:user_id])
+    #redirect_to '/messages' unless current_user.admin?
   end
   
   private 

@@ -1,7 +1,9 @@
 <div class="header">
   <div class="container">
     <img src="http://s3.amazonaws.com/codecademy-content/courses/learn-rails/img/logo-1m.svg">
-    <%= button_to "Admin page", 'admin' %>
+    <% if current_user && current_user.admin? %> 
+      <%= button_to "Admin page", 'admin' %>
+    <% end %>
     <h1>Messenger</h1>
   </div>
 </div>

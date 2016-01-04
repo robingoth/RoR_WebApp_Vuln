@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-	def new 
+	skip_before_filter :require_login
+
+  def new 
 	end
 
 	def create 
@@ -13,7 +15,6 @@ class SessionsController < ApplicationController
       return
     end
     
-    #if @user && @user.authenticate(params[:session][:password])
     if @user && @entered_pwd == @user_pwd
       session[:user_id] = @user.id
       redirect_to '/messages'

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-	def editor?
-    self.role == 'editor'
-  end
+	def admin?
+    	self.role == 'admin'
+  	end
 end
